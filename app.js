@@ -1,54 +1,75 @@
 // this is for total expense
 function getTotalExpense() {
   const foodExpenseInput = document.getElementById("food-feild");
-  const foodExpense = parseFloat(foodExpenseInput.value);
+  const foodExpense = foodExpenseInput.value;
   const rentExpenseInput = document.getElementById("rent-feild");
-  const rentExpense = parseFloat(rentExpenseInput.value);
+  const rentExpense = rentExpenseInput.value;
   const clotheExpenseInput = document.getElementById("clothes-feild");
-  const clotheExpense = parseFloat(clotheExpenseInput.value);
+  const clotheExpense = clotheExpenseInput.value;
 
-  if (
-    // validation check
-    typeof foodExpense != "number" ||
-    typeof rentExpense != "number" ||
-    typeof clotheExpense != "number" ||
-    foodExpense < 0 ||
-    rentExpense < 0 ||
-    clotheExpense < 0
-  ) {
-    return "Something wrong in expense input";
+  if (foodExpense < 0 || rentExpense < 0 || clotheExpense < 0) {
+    return 1;
+  } else if (isNaN(foodExpense) || isNaN(rentExpense) || isNaN(clotheExpense)) {
+    return 2;
   } else {
-    const totalExpense = foodExpense + rentExpense + clotheExpense;
+    const totalExpense =
+      parseFloat(foodExpense) +
+      parseFloat(rentExpense) +
+      parseFloat(clotheExpense);
+    console.log(totalExpense);
     return totalExpense;
-  }
-}
-
-// this is for total balance
-function getBalance(totalExpense) {
-  const incomeInput = document.getElementById("income-feild");
-  const income = parseFloat(incomeInput.value);
-  if (typeof income != "number" || income < 0) {
-    //   validation
-    return "something wrong in income input";
-  } else {
-    if (income < totalExpense) {
-      //validation
-      return "not avaiable money";
-    } else {
-      const balance = income - totalExpense;
-      return balance;
-    }
   }
 }
 
 // this is for calculate all value
 document.getElementById("cal-btn").addEventListener("click", function () {
+  // this is for total expense
   const totalExpense = getTotalExpense();
+  if (totalExpense == 1) {
+    document.getElementById("error").innerText =
+      "Please enter positive number!";
+    document.getElementById("total-expenses").innerText = 0;
+  } else if (totalExpense == 2) {
+    document.getElementById("error").innerText = "Please enter only number!";
+    document.getElementById("total-expenses").innerText = 0;
+  } else {
+    document.getElementById("total-expenses").innerText = totalExpense;
+    document.getElementById("error").innerText = "";
+  }
+  //   this is for balance
   const balance = getBalance(totalExpense);
-
-  document.getElementById("total-expenses").innerText = totalExpense;
-  document.getElementById("balance").innerText = balance;
+  if (balance == -1) {
+    document.getElementById("error").innerText =
+      "Please enter valid number! Negative value isn't allowed.";
+    document.getElementById("balance").innerText = "";
+  } else if (balance == -2) {
+    document.getElementById("error").innerText = "Please enter only number!";
+    document.getElementById("balance").innerText = "";
+  } else if (balance == -3) {
+    document.getElementById("error").innerText = "You don't have enough money!";
+    document.getElementById("balance").innerText = "";
+  } else {
+    document.getElementById("balance").innerText = balance;
+    document.getElementById("error").innerText = "";
+  }
 });
+
+// this is for total balance
+function getBalance(totalExpense) {
+  const incomeInput = document.getElementById("income-feild");
+  const income = incomeInput.value;
+  console.log(income);
+  if (income < 0) {
+    return -1;
+  } else if (isNaN(income)) {
+    return -2;
+  } else if (income < totalExpense) {
+    return -3;
+  } else {
+    const balance = parseFloat(income) - totalExpense;
+    return balance;
+  }
+}
 
 //adding save parsentages
 document.getElementById("save-btn").addEventListener("click", function () {
@@ -78,3 +99,6 @@ document.getElementById("save-btn").addEventListener("click", function () {
     }
   }
 });
+// function errorHandelar(message) {
+//   document.getElementById("error").innerText = message;
+// }
