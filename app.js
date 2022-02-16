@@ -13,9 +13,8 @@ function getTotalExpense() {
 }
 function getBalance(totalExpense) {
   const incomeInput = document.getElementById("income-feild");
-  const income = incomeInput.value;
-  const balance = parseFloat(income) - totalExpense;
-  console.log("Balance in get balanse: " + balance);
+  const income = parseFloat(incomeInput.value);
+  const balance = income - totalExpense;
 
   return balance;
 }
@@ -29,12 +28,13 @@ document.getElementById("cal-btn").addEventListener("click", function () {
 document.getElementById("save-btn").addEventListener("click", function () {
   const saveInput = document.getElementById("save-feild");
   const savePersentage = saveInput.value;
-  const totalExpense = getTotalExpense();
-  console.log("total expense: " + totalExpense);
-  const saveValue = totalExpense / parseFloat(savePersentage);
+
+  const incomeInput = document.getElementById("income-feild");
+  const income = parseFloat(incomeInput.value);
+  const saveValue = (income * parseFloat(savePersentage)) / 100;
   document.getElementById("saving-amount").innerText = saveValue;
+  const totalExpense = getTotalExpense();
   const balance = getBalance(totalExpense);
-  console.log("Balance: " + balance);
   const remainingBalance = balance - saveValue;
   document.getElementById("remaining-balance").innerText = remainingBalance;
 });
