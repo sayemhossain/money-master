@@ -17,7 +17,7 @@
 
 <body>
     <main>
-        <section class="m-5">
+        <section class="my-5">
             <h1 class="text-uppercase text-center">Money Management</h1>
             <hr>
             <div class="container-fluid">
@@ -26,56 +26,56 @@
                         <img src="img/photo1.jpg" alt="" class="img-fuild cover-img">
                     </div>
                     <div class="col-lg-6 bg-light mt-5 mt-lg-0">
-                        <div class="mt-5 px-md-5">
-                            <h3 class="text-center">Income</h3>
+                        <div class="mt-2 px-md-5">
+                            <h5 class="text-center">Income</h5>
                             <div class="row mb-3">
                                 <label for="colFormLabel"
-                                    class="col-sm-2 col-form-label col-form-label-lg ">Income:</label>
+                                    class="col-sm-2 col-form-label col-form-label-sm ">Income:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control form-control-lg" id="income-feild">
+                                    <input type="text" class="form-control form-control-sm" id="income-feild" placeholder="Enter your income">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mt-5 px-md-5">
-                            <h3 class="text-center mt-3">Expenses</h3>
+                        <div class="mt-2 px-md-5">
+                            <h5 class="text-center mt-2">Expenses</h5>
                             <div class="row  mb-3">
                                 <label for="colFormLabel" class="col-sm-2 col-form-label">Food:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="food-feild">
+                                    <input type="email" class="form-control form-control-sm" id="food-feild" placeholder="Enter food expenses">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="colFormLabel" class="col-sm-2 col-form-label">Rent:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="rent-feild">
+                                    <input type="email" class="form-control form-control-sm" id="rent-feild" placeholder="Enter rent expenses">
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="colFormLabel" class="col-sm-2 col-form-label">Clothes:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="clothes-feild">
+                                    <input type="email" class="form-control form-control-sm" id="clothes-feild" placeholder="Enter clothes expenses">
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-warning px-5 mt-3" id="cal-btn">Calculate</button>
-                            </div>
-                        </div>
-                        <div class="text-center mt-5">
-                            <h3>Total Expenses: <span id="total-expenses">2000</span> TK</h3>
-                            <h3 class="mt-4">Balance: <span id="balance">2000</span> TK</h3>
-                        </div>
-                        <div class="px-5 my-5">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <label for="" class="me-4 fs-5">Save: </label>
-                                <input type="text" class="form-control w-50" id="save-feild">
-                                <span class="mx-4">%</span>
-                                <button class="btn btn-warning" id="save-btn">Save</button>
+                                <button class="btn btn-warning px-4 fw-bold" id="cal-btn">Calculate</button>
                             </div>
                         </div>
                         <div class="text-center mt-3">
-                            <h3>Saving Amount: <span id="saving-amount">2000</span> TK</h3>
-                            <h3 class="mt-4">Remaining Balance: <span id="remaining-balance">4500</span> TK</h3>
+                            <h6 class="text-secondary">Total Expenses: <span id="total-expenses">2000</span> TK</h6>
+                            <h6 class="mt-2 text-secondary">Balance: <span id="balance">2000</span> TK</h6>
+                        </div>
+                        <div class="px-5 my-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label for="" class="me-4">Save: </label>
+                                <input type="text" class="form-control w-50 form-control-sm" id="save-feild">
+                                <span class="mx-4">%</span>
+                                <button class="btn btn-warning fw-bold" id="save-btn">Save</button>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <h6 class="text-secondary">Saving Amount: <span id="saving-amount">2000</span> TK</h6>
+                            <h6 class="mt-2 text-secondary">Remaining Balance: <span id="remaining-balance">4500</span> TK</h6>
                         </div>
 
                     </div>
