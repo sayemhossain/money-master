@@ -21,6 +21,23 @@ function getTotalExpense() {
   }
 }
 
+// this is for total balance
+function getBalance(totalExpense) {
+  const incomeInput = document.getElementById("income-feild");
+  const income = incomeInput.value;
+  console.log(income);
+  if (income < 0) {
+    return -1;
+  } else if (isNaN(income)) {
+    return -2;
+  } else if (income < totalExpense) {
+    return -3;
+  } else {
+    const balance = parseFloat(income) - totalExpense;
+    return balance;
+  }
+}
+
 // this is for calculate all value
 document.getElementById("cal-btn").addEventListener("click", function () {
   // this is for total expense
@@ -54,23 +71,6 @@ document.getElementById("cal-btn").addEventListener("click", function () {
   }
 });
 
-// this is for total balance
-function getBalance(totalExpense) {
-  const incomeInput = document.getElementById("income-feild");
-  const income = incomeInput.value;
-  console.log(income);
-  if (income < 0) {
-    return -1;
-  } else if (isNaN(income)) {
-    return -2;
-  } else if (income < totalExpense) {
-    return -3;
-  } else {
-    const balance = parseFloat(income) - totalExpense;
-    return balance;
-  }
-}
-
 //adding save parsentages
 document.getElementById("save-btn").addEventListener("click", function () {
   //   this  save Persentage code
@@ -79,9 +79,13 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const incomeInput = document.getElementById("income-feild");
   const income = parseFloat(incomeInput.value);
 
-  if (typeof savePersentage != "number" || savePersentage < 0) {
+  if (isNaN(savePersentage)) {
     //   checking valid input
-    console.log("something wrong in save input");
+    document.getElementById("saveing-error").innerText =
+      "Please enter only number!";
+  } else if (savePersentage < 0) {
+    document.getElementById("saveing-error").innerText =
+      "Please enter positive number!";
   } else {
     const saveAmount = (income * savePersentage) / 100;
     document.getElementById("saving-amount").innerText = saveAmount;
@@ -91,14 +95,12 @@ document.getElementById("save-btn").addEventListener("click", function () {
     const balance = getBalance(totalExpense);
 
     if (saveAmount > balance) {
-      // validation
-      console.log("Not enough money to save");
+      document.getElementById("saveing-error").innerText =
+        "Not enough money for saveing!";
     } else {
       const remainingBalance = balance - saveAmount;
       document.getElementById("remaining-balance").innerText = remainingBalance;
+      document.getElementById("saveing-error").innerText = "";
     }
   }
 });
-// function errorHandelar(message) {
-//   document.getElementById("error").innerText = message;
-// }
