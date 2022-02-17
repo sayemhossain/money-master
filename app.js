@@ -97,7 +97,10 @@ document.getElementById("save-btn").addEventListener("click", function () {
 
     if (saveAmount > balance) {
       document.getElementById("saveing-error").innerText =
-        "Not enough money for saveing...!";
+        "You want to save " +
+        savePersentage +
+        "% but not enough money in your account...!";
+      document.getElementById("remaining-balance").innerText = 0;
     } else {
       const remainingBalance = balance - saveAmount;
       document.getElementById("remaining-balance").innerText = remainingBalance;
